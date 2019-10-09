@@ -15,8 +15,9 @@ import { Storage } from '@ionic/storage';
 export class AppComponent implements OnInit {
   isInstallMessageShown = false;
   isMobile = true;
+  dark = false;
 
-  pages = [
+  appPages = [
     {
       title: 'Login',
       url: '/login',
@@ -58,7 +59,6 @@ export class AppComponent implements OnInit {
     // this.listenForLoginEvents();
     await this.showIosInstallBanner();
     this.handleAppUpdate();
-    this.setMenuItem();
   }
 
   handleAppUpdate() {
@@ -86,25 +86,6 @@ export class AppComponent implements OnInit {
         await alert.present();
       });
     }
-  }
-
-  setMenuItem() {
-    this.router.events.subscribe((event: RouterEvent) => {
-      if (event instanceof NavigationEnd) {
-        this.pages.map(p => {
-          // tslint:disable-next-line: no-string-literal
-          return (p['active'] = event.url === p.url);
-        });
-      }
-    });
-
-    // if (this.swUpdate.isEnabled) {
-    //   this.swUpdate.available.subscribe(() => {
-    //     if (confirm('New version available. Load New Version?')) {
-    //       window.location.reload();
-    //     }
-    //   });
-    // }
   }
 
   async showIosInstallBanner() {
@@ -138,8 +119,8 @@ export class AppComponent implements OnInit {
       if (this.platform.is('desktop')) {
         this.isMobile = false;
       }
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.statusBar.styleDefault();
+      // this.splashScreen.hide();
     });
 
     this.router.events.subscribe((event: RouterEvent) => {
