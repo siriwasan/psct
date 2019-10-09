@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private menuCtrl: MenuController,
+    private menu: MenuController,
     private router: Router,
     private swUpdate: SwUpdate,
     private storage: Storage,
@@ -129,5 +129,11 @@ export class AppComponent implements OnInit {
     //     this.menuCtrl.enable(false);
     //   }
     // });
+  }
+
+  openTutorial() {
+    this.menu.enable(false);
+    this.storage.set('ion_did_tutorial', false);
+    this.router.navigateByUrl('/tutorial');
   }
 }
