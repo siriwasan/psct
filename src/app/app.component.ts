@@ -16,27 +16,28 @@ export class AppComponent implements OnInit {
   isInstallMessageShown = false;
   isMobile = true;
   dark = false;
+  loggedIn = false;
 
   appPages = [
     {
-      title: 'Login',
-      url: '/login',
-      icon: 'log-in'
+      title: 'Events',
+      url: '/tabs/events',
+      icon: 'contacts'
     },
     {
-      title: 'Tab1',
-      url: '/tabs/tab1',
-      icon: 'person'
+      title: 'Registered',
+      url: '/tabs/registered',
+      icon: 'flash'
     },
     {
-      title: 'Tab2',
-      url: '/tabs/tab2',
+      title: 'Scores',
+      url: '/tabs/scores',
+      icon: 'apps'
+    },
+    {
+      title: 'About',
+      url: '/tabs/about',
       icon: 'information-circle'
-    },
-    {
-      title: 'Tab3',
-      url: '/tabs/tab3',
-      icon: 'alarm'
     }
   ];
 
@@ -123,10 +124,10 @@ export class AppComponent implements OnInit {
       // this.splashScreen.hide();
     });
 
-    this.router.events.subscribe((event: RouterEvent) => {
-      if (event instanceof NavigationEnd && event.url === '/login') {
-        this.menuCtrl.enable(false);
-      }
-    });
+    // this.router.events.subscribe((event: RouterEvent) => {
+    //   if (event instanceof NavigationEnd && event.url === '/login') {
+    //     this.menuCtrl.enable(false);
+    //   }
+    // });
   }
 }

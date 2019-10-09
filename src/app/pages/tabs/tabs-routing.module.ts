@@ -8,45 +8,54 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'events',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+            loadChildren: () => import('../event-list/event-list.module').then(m => m.EventListPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'registered',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../registered-list/registered-list.module').then(m => m.RegisteredListPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'scores',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../score-list/score-list.module').then(m => m.ScoreListPageModule)
+          }
+        ]
+      },
+      {
+        path: 'about',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../about/about.module').then(m => m.AboutPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/events',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/events',
     pathMatch: 'full'
   }
 ];
