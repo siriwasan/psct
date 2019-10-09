@@ -1,12 +1,13 @@
 {
   "name": "Practical Shooting Club Thailand",
   "short_name": "PSCT",
+  "description": "This is a app which collect PSCT events and scoring.",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/?utm_source=home_screen",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

@@ -1,27 +1,48 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
+  "appData": {
+    "version": "1.0.4",
+    "changelog": "Test update with message"
+  },
   "assetGroups": [
     {
-      "name": "app",
+      "name": "appshell",
       "installMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
           "/index.html",
-          "/*.css",
-          "/*.js"
+          "/styles.*.css",
+          "/vendor.*.js",
+          "/common.*.js",
+          "/main.*.js",
+          "/runtime.*.js",
+          "/*polyfills.*.js"
         ]
       }
-    }, {
-      "name": "assets",
+    },
+    {
+      "name": "modules",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/*.js",
+          "!/vendor.*.js",
+          "!/common.*.js",
+          "!/main.*.js",
+          "!/runtime.*.js",
+          "!/*polyfills.*.js"
         ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/**", "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"]
       }
     }
   ]
