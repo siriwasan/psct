@@ -22,17 +22,17 @@ export class AppComponent implements OnInit {
     {
       title: 'Events',
       url: '/tabs/events',
-      icon: 'contacts'
+      icon: 'calendar'
     },
     {
       title: 'Registered',
       url: '/tabs/registered',
-      icon: 'flash'
+      icon: 'list'
     },
     {
       title: 'Scores',
       url: '/tabs/scores',
-      icon: 'apps'
+      icon: 'document'
     },
     {
       title: 'About',
