@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +19,10 @@ export class AppComponent implements OnInit {
   isInstallMessageShown = false;
   isMobile = true;
   dark = false;
-  loggedIn = false;
+
+  isLoggedIn$: Observable<boolean>;
+  pictureUrl$: Observable<string>;
+  displayName$: Observable<string>;
 
   appPages = [
     {
@@ -50,12 +56,17 @@ export class AppComponent implements OnInit {
     private swUpdate: SwUpdate,
     private storage: Storage,
     private toastController: ToastController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private afAuth: AngularFireAuth
   ) {
     this.initializeApp();
   }
 
   async ngOnInit() {
+    this.isLoggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
+    this.pictureUrl$ = this.afAuth.authState.pipe(map(user => (user ? user.photoURL : null)));
+    this.displayName$ = this.afAuth.authState.pipe(map(user => (user ? user.displayName : null)));
+
     // this.checkLoginStatus();
     // this.listenForLoginEvents();
     await this.showIosInstallBanner();
@@ -135,5 +146,9 @@ export class AppComponent implements OnInit {
     this.menu.enable(false);
     this.storage.set('ion_did_tutorial', false);
     this.router.navigateByUrl('/tutorial');
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 }

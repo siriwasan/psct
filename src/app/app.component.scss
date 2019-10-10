@@ -4,3 +4,28 @@
     color: var(--ion-color-primary);
   }
 }
+
+.profile-section {
+  background-color: #2172af;
+  height: 170px;
+}
+
+.profile {
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.profile .picture {
+  width: 100px;
+  border-radius: 50%;
+}
+.profile .name {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
